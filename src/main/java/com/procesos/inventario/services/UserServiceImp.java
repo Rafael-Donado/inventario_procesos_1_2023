@@ -12,7 +12,7 @@ import java.util.Optional;
 public class UserServiceImp implements UserService {
     @Autowired
     private UserRepository UserRepository;
-
+    @Override
     public User getUser(Long id){return UserRepository.findById(id).get();}
 
     @Override
