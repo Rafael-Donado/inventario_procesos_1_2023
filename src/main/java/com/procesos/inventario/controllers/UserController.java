@@ -53,5 +53,18 @@ public class UserController {
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
     }
+    @PutMapping (value = "/user/{id}")
+    public ResponseEntity updateUser(@PathVariable long id, @RequestBody User user){
+        Map response = new HashMap();
+        Boolean userResp = userService.updateUser(id, user);
+        if (userResp){
+            response.put("status","400");
+            response.put("message","Error en los datos enviados");
+            return new ResponseEntity(response, HttpStatus.PAYMENT_REQUIRED);
+        }
+        response.put("status","200");
+        response.put("message","Usuario actualizado exitosamente");
+        return new ResponseEntity(response, HttpStatus.CREATED);
+    }
 }
 

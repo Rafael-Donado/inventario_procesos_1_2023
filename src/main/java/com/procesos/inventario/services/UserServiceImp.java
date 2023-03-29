@@ -34,7 +34,6 @@ public class UserServiceImp implements UserService {
     public Boolean updateUser(Long id, User user) {
         try{
         User userBD = UserRepository.findById(id).get();
-
         userBD.setFirstName(user.getFirstName());
         userBD.setLastName(user.getLastName());
         userBD.setBirthday(user.getBirthday());
