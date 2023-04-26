@@ -66,5 +66,16 @@ public class UserController {
         response.put("message","Usuario actualizado exitosamente");
         return new ResponseEntity(response, HttpStatus.CREATED);
     }
+    @PostMapping(value = "auth/login")
+    public ResponseEntity login (@RequestBody User user){
+        Map response = new HashMap();
+        try {
+            return new ResponseEntity(userService.login(user), HttpStatus.OK);
+        }catch (Exception e){
+            response.put("status", "404");
+            response.put("message", e.getMessage());
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
+    }
 }
 
